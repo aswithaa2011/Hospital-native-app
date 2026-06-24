@@ -104,14 +104,14 @@ export default function DashboardScreen() {
 
         <View style={styles.infoRow}>
           <InfoChip label="Age" value={`${item.age} yrs`} />
-          {item.roomNumber && <InfoChip label="Room" value={item.roomNumber} />}
-          {item.assignedNurse && <InfoChip label="Nurse" value={item.assignedNurse.fullName || item.assignedNurse.username} />}
-          {item.assignedDoctor && <InfoChip label="Doctor" value={item.assignedDoctor.fullName || item.assignedDoctor.username} />}
+          {!!item.roomNumber && <InfoChip label="Room" value={item.roomNumber} />}
+          {!!item.assignedNurse && <InfoChip label="Nurse" value={item.assignedNurse.fullName || item.assignedNurse.username} />}
+          {!!item.assignedDoctor && <InfoChip label="Doctor" value={item.assignedDoctor.fullName || item.assignedDoctor.username} />}
         </View>
 
         <Text style={styles.symptoms} numberOfLines={2}>🩺 {item.symptoms}</Text>
 
-        {item.diagnosis && (
+        {!!item.diagnosis && (
           <Text style={styles.diagnosis} numberOfLines={2}>📋 Diagnosis: {item.diagnosis}</Text>
         )}
 

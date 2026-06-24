@@ -1,17 +1,13 @@
 import axios from 'axios';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { Platform } from 'react-native';
 import { router } from 'expo-router';
 
-const BASE_URL =
-  Platform.OS === 'web'
-    ? 'http://localhost:8000/api'
-    : 'http://172.24.7.92:8000/api';
+const BASE_URL = 'https://hospital-native-app.onrender.com/api';
 
 const api = axios.create({
   baseURL: BASE_URL,
   headers: { 'Content-Type': 'application/json' },
-  timeout: 12000,
+  timeout: 60000,
 });
 
 // Auto-attach JWT from storage
