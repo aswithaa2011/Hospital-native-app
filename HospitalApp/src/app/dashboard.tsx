@@ -95,7 +95,6 @@ export default function DashboardScreen() {
     const statusColor = STATUS_COLORS[item.status] || '#64748B';
     return (
       <View style={styles.card}>
-        {/* Header */}
         <View style={styles.cardHeader}>
           <Text style={styles.patientName}>{item.name}</Text>
           <View style={[styles.statusBadge, { backgroundColor: statusColor + '22', borderColor: statusColor }]}>
@@ -103,7 +102,6 @@ export default function DashboardScreen() {
           </View>
         </View>
 
-        {/* Info */}
         <View style={styles.infoRow}>
           <InfoChip label="Age" value={`${item.age} yrs`} />
           {item.roomNumber && <InfoChip label="Room" value={item.roomNumber} />}
@@ -117,7 +115,6 @@ export default function DashboardScreen() {
           <Text style={styles.diagnosis} numberOfLines={2}>📋 Diagnosis: {item.diagnosis}</Text>
         )}
 
-        {/* Role-based actions */}
         <View style={styles.cardActions}>
           {canAssignNurse && item.status === 'Admitted' && (
             <ActionBtn label="Assign Nurse" color="#3B82F6"
@@ -154,7 +151,6 @@ export default function DashboardScreen() {
         }}
       />
 
-      {/* Admit button for reception */}
       {canAdmit && (
         <TouchableOpacity style={styles.admitBar} onPress={() => router.push('/admit-patient')} activeOpacity={0.85}>
           <Text style={styles.admitBarText}>+ Admit New Patient</Text>
