@@ -66,7 +66,7 @@ export default function AdmitPatientScreen() {
         <View style={styles.card}>
           <Text style={styles.cardTitle}>Admit New Patient</Text>
 
-          {!!error && <View style={styles.errorBox}><Text style={styles.errorText}>⚠ {error}</Text></View>}
+          {error ? <View style={styles.errorBox}><Text style={styles.errorText}>⚠ {error}</Text></View> : null}
 
           <Field label="Patient Name *">
             <TextInput style={styles.input} placeholder="e.g. John Doe"

@@ -26,7 +26,7 @@ export default function ReviewPatientScreen() {
         <View style={styles.card}>
           <Text style={styles.cardTitle}>Review & Discharge</Text>
           <Text style={styles.patientLabel}>Patient: <Text style={styles.patientName}>{name}</Text></Text>
-          {!!error && <View style={styles.errorBox}><Text style={styles.errorText}>⚠ {error}</Text></View>}
+          {error ? <View style={styles.errorBox}><Text style={styles.errorText}>⚠ {error}</Text></View> : null}
           <Text style={styles.fieldLabel}>Chief Doctor Notes (optional)</Text>
           <TextInput
             style={[styles.input, styles.textArea]}

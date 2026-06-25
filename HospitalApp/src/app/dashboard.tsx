@@ -104,34 +104,34 @@ export default function DashboardScreen() {
 
         <View style={styles.infoRow}>
           <InfoChip label="Age" value={`${item.age} yrs`} />
-          {!!item.roomNumber && <InfoChip label="Room" value={item.roomNumber} />}
-          {!!item.assignedNurse && <InfoChip label="Nurse" value={item.assignedNurse.fullName || item.assignedNurse.username} />}
-          {!!item.assignedDoctor && <InfoChip label="Doctor" value={item.assignedDoctor.fullName || item.assignedDoctor.username} />}
+          {item.roomNumber ? <InfoChip label="Room" value={item.roomNumber} /> : null}
+          {item.assignedNurse ? <InfoChip label="Nurse" value={item.assignedNurse.fullName || item.assignedNurse.username} /> : null}
+          {item.assignedDoctor ? <InfoChip label="Doctor" value={item.assignedDoctor.fullName || item.assignedDoctor.username} /> : null}
         </View>
 
         <Text style={styles.symptoms} numberOfLines={2}>🩺 {item.symptoms}</Text>
 
-        {!!item.diagnosis && (
+        {item.diagnosis ? (
           <Text style={styles.diagnosis} numberOfLines={2}>📋 Diagnosis: {item.diagnosis}</Text>
-        )}
+        ) : null}
 
         <View style={styles.cardActions}>
-          {canAssignNurse && item.status === 'Admitted' && (
+          {canAssignNurse && item.status === 'Admitted' ? (
             <ActionBtn label="Assign Nurse" color="#3B82F6"
               onPress={() => router.push({ pathname: '/assign-nurse', params: { id: item._id, name: item.name } })} />
-          )}
-          {canAssignRoom && (item.status === 'Nurse Assigned' || item.status === 'Admitted') && (
+          ) : null}
+          {canAssignRoom && (item.status === 'Nurse Assigned' || item.status === 'Admitted') ? (
             <ActionBtn label="Assign Room & Doctor" color="#8B5CF6"
               onPress={() => router.push({ pathname: '/assign-room', params: { id: item._id, name: item.name } })} />
-          )}
-          {canDiagnose && item.status === 'Room Assigned' && (
+          ) : null}
+          {canDiagnose && item.status === 'Room Assigned' ? (
             <ActionBtn label="Add Diagnosis" color="#0D9488"
               onPress={() => router.push({ pathname: '/add-diagnosis', params: { id: item._id, name: item.name } })} />
-          )}
-          {canReview && !item.reviewed && (
+          ) : null}
+          {canReview && !item.reviewed ? (
             <ActionBtn label="Review & Discharge" color="#10B981"
               onPress={() => router.push({ pathname: '/review-patient', params: { id: item._id, name: item.name } })} />
-          )}
+          ) : null}
         </View>
       </View>
     );
@@ -151,11 +151,11 @@ export default function DashboardScreen() {
         }}
       />
 
-      {canAdmit && (
+      {canAdmit ? (
         <TouchableOpacity style={styles.admitBar} onPress={() => router.push('/admit-patient')} activeOpacity={0.85}>
           <Text style={styles.admitBarText}>+ Admit New Patient</Text>
         </TouchableOpacity>
-      )}
+      ) : null}
 
       {loading ? (
         <View style={styles.center}>

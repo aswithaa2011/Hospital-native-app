@@ -41,7 +41,7 @@ export default function AssignNurseScreen() {
         <View style={styles.card}>
           <Text style={styles.cardTitle}>Assign Nurse</Text>
           <Text style={styles.patientLabel}>Patient: <Text style={styles.patientName}>{name}</Text></Text>
-          {!!error && <View style={styles.errorBox}><Text style={styles.errorText}>⚠ {error}</Text></View>}
+          {error ? <View style={styles.errorBox}><Text style={styles.errorText}>⚠ {error}</Text></View> : null}
           {loadingNurses
             ? <ActivityIndicator color="#0D9488" style={{ marginTop: 20 }} />
             : nurses.length === 0

@@ -87,19 +87,19 @@ export default function LoginScreen() {
             {isRegister ? 'Create your staff account' : 'Sign in to your staff account'}
           </Text>
 
-          {!!error && (
+          {error ? (
             <View style={styles.errorBox}>
               <Text style={styles.errorText}>⚠ {error}</Text>
             </View>
-          )}
+          ) : null}
 
-          {isRegister && (
+          {isRegister ? (
             <Field label="Full Name (optional)">
               <TextInput style={styles.input} placeholder="e.g. Dr. Jane Smith"
                 placeholderTextColor="#475569" value={fullName}
                 onChangeText={setFullName} autoCapitalize="words" />
             </Field>
-          )}
+          ) : null}
 
           <Field label="Username">
             <TextInput style={styles.input} placeholder="Enter your username"
@@ -113,7 +113,7 @@ export default function LoginScreen() {
               onChangeText={setPassword} secureTextEntry autoCapitalize="none" autoCorrect={false} />
           </Field>
 
-          {isRegister && (
+          {isRegister ? (
             <Field label="Role">
               <View style={styles.roleGrid}>
                 {ROLES.map((r) => (
@@ -130,7 +130,7 @@ export default function LoginScreen() {
                 ))}
               </View>
             </Field>
-          )}
+          ) : null}
 
           <TouchableOpacity style={styles.btn} onPress={handleSubmit} disabled={loading} activeOpacity={0.85}>
             {loading

@@ -27,7 +27,7 @@ export default function AddDiagnosisScreen() {
         <View style={styles.card}>
           <Text style={styles.cardTitle}>Add Diagnosis</Text>
           <Text style={styles.patientLabel}>Patient: <Text style={styles.patientName}>{name}</Text></Text>
-          {!!error && <View style={styles.errorBox}><Text style={styles.errorText}>⚠ {error}</Text></View>}
+          {error ? <View style={styles.errorBox}><Text style={styles.errorText}>⚠ {error}</Text></View> : null}
           <Text style={styles.fieldLabel}>Diagnosis *</Text>
           <TextInput
             style={[styles.input, styles.textArea]}
